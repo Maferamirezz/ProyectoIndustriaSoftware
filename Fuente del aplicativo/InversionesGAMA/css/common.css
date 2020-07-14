@@ -1,0 +1,74 @@
+/* ----------------------------------------------- */
+/* COMMON STYLESHEET */
+body, .footer-copyright {
+    background-color: rgb(29, 48, 45) !important;
+}
+nav, footer {
+    background-color: rgba(29, 48, 45, 0.9) !important;
+}
+select {
+    margin-bottom: 8px;
+}
+#logo-container{
+    height: 100%;
+    display: flex;
+}
+#nav-logo-svg{
+    height: 90%;
+}
+#logo-svg {
+    height: 58px !important;
+}
+.purple-orange-gradient {
+    background: linear-gradient(45deg, rgb(142, 36, 170), rgb(255, 110, 64));
+}
+.purple-orange-gradient:focus {
+    box-shadow: 0 0 2px 5px hsla(4, 90%, 58%, 0.5) !important;
+}
+.green-blue-gradient {
+    background: linear-gradient(45deg, rgb(104, 213, 93), rgb(32, 150, 145));
+}
+.green-blue-gradient:focus {
+    box-shadow: 0 0 2px 5px rgba(43, 187, 173, 0.5) !important;
+}
+.principal-container {
+    display: flex;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center;
+}
+.principal-div{
+    border-radius: 3px;
+    margin: 0em 2em !important;
+    padding: 2em 2em 3em !important;
+}
+.gama-title {
+    color: #ee6e73;
+    font-style: italic;
+}
+.flex-div {    
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+.principal-panel {
+    border: none;
+    padding: 1em !important;
+    margin: 0 !important;
+}
+footer {
+    padding: 1em 0 0 !important;
+    text-align: center;
+}
+footer>div>div>a:hover{
+    color: black !important;
+    transition: color .2s ease-out;
+}
+
+/* ----------------------------------------------- */
+/* UTILIDADES */
+.margin-zero {
+    margin: 0 !important;
+}

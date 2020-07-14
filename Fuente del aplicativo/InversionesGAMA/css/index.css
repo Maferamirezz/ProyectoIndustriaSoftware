@@ -1,0 +1,21 @@
+/* ----------------------------------------------- */
+/* INDEX.PHP STYLESHEET */
+.login-bg {
+  background-image: url(../img/bg_dark.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #282b2a;
+}
+
+.login-principal-div {
+  justify-content: center;
+  margin: 0;
+  padding: 0 !important;
+}
+
+.login-principal-card {
+    padding: 2em 3em !important;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    border-radius: 3px;
+}

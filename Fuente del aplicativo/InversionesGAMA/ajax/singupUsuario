@@ -1,0 +1,52 @@
+<?php
+
+        Obtener Tipos
+            include_once '../class/conexionOracle.php';
+            $conexion = new Conexion();
+            $SQL = "SELECT tipo, descripcion FROM tipo";
+            $resultado = $conexion->ejecutarConsulta($SQL);
+            $arreglo = array();
+            
+            while( $tipo = $conexion->obtenerFila($resultado) ){
+                $arreglo[] = $tipo;
+            }
+            echo json_encode($tipo);
+            $conexion->cerrarConexion();
+          
+        Registrar
+        //esta parte del conn es la direccion donde tenes el localhost en tu compu
+            $conn = oci_connect("walterwaleska","walterwaleska","localhost/xe") or die;
+            $sql= 'BEGIN SP_GESTIONUSUARIO(:pnombre,:papellido,:pcontraseña,:tipo,:telefono,:area,:username,:direccion,:contrato); END;';
+            $stmt = oci_parse($conn,$sql);
+            //  Bind the input parameters
+            oci_bind_by_name($stmt,':pnombre',$Nombre,45);
+            oci_bind_by_name($stmt,':papellido',$apellido,45);
+            oci_bind_by_name($stmt,':pcontraseña',$contraseña,45);
+            oci_bind_by_name($stmt,':tipo',$tipo,45);
+            oci_bind_by_name($stmt,':telefono',$telefono,38);
+            oci_bind_by_name($stmt,':area',$area,45);
+            oci_bind_by_name($stmt,':username',$username,45);
+            oci_bind_by_name($stmt,':direccion',$direccion,45);
+            //  Bind the output parameters
+            oci_bind_by_name($stmt,':contrato',$contrato,1);
+
+            // Assign a value to the inputs parameters
+            $Nombre= $_GET["pNombre"];
+            $apellido= $_GET["papellido"];
+            $contraseña= $_GET["pcontraseña"];
+            $tipo= $_GET["tipo"];
+            $telefono= $_GET["telefono"];
+            $area= $_GET["area"];
+            $username= $_GET["username"];
+            $direccion= 'direccion';
+
+            oci_execute($stmt);
+            // $message is now populated with the output value
+            $respuesta["pcCodigo"] = "$pcCodigo";
+            $respuesta["pcMessage"] = "$pcMessage";
+            echo json_encode($respuesta);
+            oci_close($conn);
+          
+            
+	}    
+?>

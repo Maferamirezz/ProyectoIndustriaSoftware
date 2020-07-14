@@ -1,0 +1,15 @@
+/* ----------------------------------------------- */
+/* ventas.php STYLESHEET */
+table, th, td {
+    border: 1px solid grey;
+}
+table {
+    margin: 1em 0;
+}
+.display-contents {
+    display: contents;
+}
+
+.table-without-border, .table-without-border>tbody>tr>td {
+    border: none !important;
+}

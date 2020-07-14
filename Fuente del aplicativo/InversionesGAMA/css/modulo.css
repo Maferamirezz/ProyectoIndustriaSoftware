@@ -1,0 +1,143 @@
+/* ----------------------------------------------- */
+/* MODULOS STYLESHEET */
+.common-bg {
+    background-image: url(../img/color_pattern.jpg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
+    background-color: #091416;
+}
+.let-scroll {
+    justify-content: space-between;
+    display: flex;
+    /*padding: 0 1em;*/
+    height: 3.2em;
+}
+.tab {
+    width: 100% !important;
+    height: 100% !important;
+}
+.justify-text {
+    text-align: justify;
+}
+.justify-text > h5 {
+    color: #ee6e73;
+    text-transform: uppercase;
+}
+.switch > label {
+    font-size: initial;
+}
+.btn-div-padding {
+    padding: 0 4%;
+}
+.link-style {
+    position: absolute;
+    bottom: 11px;
+    left: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    color: #039be5;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 22px;
+    padding-top: 0.5em;
+}
+.link-style:hover {
+    text-decoration: underline;
+    color: #272797;
+}
+.link-style:focus {
+    background-color: transparent !important;
+}
+.link-style-no-absolute {
+    position: initial;
+    bottom: unset;
+    left: unset;
+}
+.collection-item.avatar > div > div.col .circle {
+    top: 15px;
+}
+.modal > .modal-content > h4, .modal > .modal-content > h5{
+    color: #ee6e73;
+}
+.scroll-item {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* ----------------------------------------------- */
+/* UTILIDADES */
+.visible {
+    display: initial !important;
+}
+.grid-display {
+    display: grid;
+}
+.flex-display {
+    display: flex;
+}
+.no-left-float{
+    float: inherit !important;
+}
+.bold-text {
+    font-weight: 500;
+}
+.padding-zero {
+    padding: 0 !important;
+}
+.no-margin-padding-top {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+.no-margin-padding-bottom {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+.valid-select {
+    border: 2px solid #4caf50;
+}
+.invalid-select {
+    border: 2px solid #f44336;
+}
+.right-pad-input {
+    padding: 0 0.75em 0 0 !important;
+}
+.left-pad-input {
+    padding: 0 0 0 0.75em !important;
+}
+.total-width {
+    width: 100%;
+}
+.waves-effect.waves-blue .waves-ripple {
+    background-color: rgba(7, 138, 224, 0.65);
+}
+.salto-de-linea {
+    display: inline-table;
+}
+
+/* ----------------------------------------------- */
+/* RESPONSIVE DESIGN */
+@media screen and (max-width:625px){
+    .let-scroll{
+        height: 4.5em;
+    }
+}
+@media screen and (max-width:600px){
+    .right-pad-input {
+    padding: 0 !important;
+    }
+    .left-pad-input {
+    padding: 0 !important;
+    }
+}
+
+/* ----------------------------------------------- */
+/* PAGINAS ESPECIFICAS */
+/* INVENTARIO.PHP */
+
+.inv-img { /*Dar tamaño a las imagénes de cards y collection-item avatar*/
+    width: 2em;
+    height: 2em;
+    display: block;
+}
