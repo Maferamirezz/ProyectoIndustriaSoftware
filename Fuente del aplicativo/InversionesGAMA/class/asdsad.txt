@@ -1,5 +1,0 @@
-<RTNPROVEEDOR: 213123 NOMBREPROVEEDOR: ASDSAD DIRECCION: Tegucigalpa Honduras EMAIL: ASD@UNAH.HN TELEFONO: 88184449 EMAIL: ASD@UNAH.HN TIPOPROVEEDOR: <br />
-<b>Warning</b>:  oci_execute(): ORA-06550: line 5, column 13:
-PLS-00306: wrong number or types of arguments in call to 'SP_REGISTRARPROVEEDOR'
-ORA-06550: line 5, column 13:
-PL/SQL: Statement ignored in <b>C:\xampp\htdocs\Proyecto In\ProyectoIndustriaSoftware\Fuente del aplicativo\InversionesGAMA\class\class-conexion.php</b> on line <b>20</b><br />
