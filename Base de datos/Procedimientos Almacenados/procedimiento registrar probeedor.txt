@@ -1,0 +1,61 @@
+create or replace NONEDITIONABLE procedure SP_RegistrarProveedor(
+    pcRtnProv in varchar2,
+	pcNombreProveedor in varchar2,
+    pcDireccion in varchar2,
+    pcEmail in varchar2,
+    pnTelefono in number,
+    pnEstado in number,
+    pnIdTipoProveedor in number,
+
+    pnCodigo out number,
+    pcMensaje out varchar2
+)
+IS
+    vnConteo number;
+    vcTemp varchar(200);
+BEGIN
+    pnCodigo:=0;
+    pcMensaje:='';
+    vnConteo:=0;
+	vcTemp:='';
+
+    if pcRtnProv='' or pcRtnProv is null then
+		vcTemp:='Campo requerido';
+	end if;
+
+    if pcNombreProveedor='' or pcNombreProveedor is null then
+		vcTemp:='Campo requerido';
+	end if;
+
+	if pcDireccion='' or pcDireccion is null then
+		vcTemp:='Campo requerido';
+	end if;
+
+	if pnTelefono='' or pnTelefono is null then
+		vcTemp:='Campo requerido';
+	end if;
+
+    if pcEmail='' or pcEmail is null then
+		vcTemp:='Campo requerido';
+	end if;
+
+	if pnEstado='' or pnEstado is null then
+		vcTemp:='Campo requerido';
+    end if;
+
+	if pnIdTipoProveedor='' or pnIdTipoProveedor is null then
+		vcTemp:='Campo requerido';
+	end if;
+
+		SELECT COUNT(*) INTO vnConteo FROM Proveedor WHERE rtnProveedor=pcrtnprov;
+
+		IF vnConteo=0 THEN
+		  INSERT INTO Proveedor(rtnProveedor, nombreProveedor, direccion, email,telefono, estado, tipoproveedor_idtipoproveedor)
+		  VALUES(pcRtnProv,pcNombreProveedor, pcDireccion, pcEmail,pnTelefono, pnEstado, pnIdTipoProveedor);
+		  pnCodigo:=1;
+		  pcMensaje:='Proveedor registrado correctamente';
+		  ELSE
+			pnCodigo:=0;
+			pcMensaje:='RTN mal escrito o duplicado. Por favor ingresar uno nuevo.';
+		END IF;
+END;
