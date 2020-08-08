@@ -58,19 +58,19 @@
                     <br>
                     <center>
                       <div class="row">
-                        <a href="ventas.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Nueva factura</a>
+                        <a href="ventas.html#ven1" class="btn btn-large col s12 waves-effect purple-orange-gradient">Nueva factura</a>
                       </div>
                     </center>
                     <br>
                     <center>
                       <div class="row">
-                        <a href="ventas.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Clientes</a>
+                        <a href="ventas.html#ven2" class="btn btn-large col s12 waves-effect purple-orange-gradient">Clientes</a>
                       </div>
                     </center>
                     <br>
                     <center>
                       <div class="row">
-                        <a href="ventas.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Productos</a>
+                        <a href="ventas.html#ven3" class="btn btn-large col s12 waves-effect purple-orange-gradient">Productos</a>
                       </div>
                     </center>
                   </div>
@@ -85,19 +85,19 @@
                     <br>
                     <center>
                       <div class="row">
-                        <a href="inventario.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Insumo</a>
+                        <a href="inventario.html#inv1" class="btn btn-large col s12 waves-effect purple-orange-gradient">Insumo</a>
                       </div>
                     </center>
                     <br>
                     <center>
                       <div class="row">
-                        <a href="inventario.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Proveedor</a>
+                        <a href="inventario.html#inv2" class="btn btn-large col s12 waves-effect purple-orange-gradient">Proveedor</a>
                       </div>
                     </center>
                     <br>
                     <center>
                       <div class="row">
-                        <a href="inventario.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Historial de ventas</a>
+                        <a href="inventario.html#inv3" class="btn btn-large col s12 waves-effect purple-orange-gradient">Historial de ventas</a>
                       </div>
                     </center>
                   </div>
@@ -112,13 +112,13 @@
                     <br>
                     <center>
                       <div class="row">
-                        <a href="administracion.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Usuarios</a>
+                        <a href="administracion.html#adm1" class="btn btn-large col s12 waves-effect purple-orange-gradient">Usuarios</a>
                       </div>
                     </center>
                     <br>
                     <center>
                       <div class="row">
-                        <a href="administracion.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Jornada laboral</a>
+                        <a href="administracion.html#adm2" class="btn btn-large col s12 waves-effect purple-orange-gradient">Jornada laboral</a>
                       </div>
                     </center>
                   </div>

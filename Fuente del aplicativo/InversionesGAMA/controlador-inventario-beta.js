@@ -200,78 +200,78 @@ function mostrarInsumos() {
 /* ********************************************************* */
 /* ------ PROVEEDORES ------ */
 $("#btn-proveedor").click(   /**
-    * Registrar nuevo proveedor.
-    */
-   function(){
-       if (
-           validarRegex("proveedor-txt-rtn", "entero") &&
-           validarCampoVacio("proveedor-txt-nombre") &&
-           validarSelectList("proveedor-txt-tipo", "proveedor-span-tipo") &&
-           validarCampoNoObligatorio("proveedor-txt-direccion") &&
-           validarRegex("proveedor-txt-telefono", "entero") &&
-           validarEmailNoObligatorio("proveedor-txt-email")
-       ) {
-           var parametro = "proveedor-txt-rtn="+$("#proveedor-txt-rtn").val()+"&"+
-           "proveedor-txt-nombre="+$("#proveedor-txt-nombre").val()+"&"+
-           "proveedor-txt-tipo="+1+"&"+
-           "proveedor-txt-direccion="+$("#proveedor-txt-direccion").val()+"&"+
-           "proveedor-txt-telefono="+parseInt($("#proveedor-txt-telefono").val())+"&"+
-           "proveedor-txt-email="+$("#proveedor-txt-email").val()+"&"+
-           "estado="+1+"&"+"accion1 = guardar";
-           
-           $("#btn-proveedor").attr("disabled",true);
-           $.ajax({
-               url:"ajax/gestionProveedores.php?accion1=guardar",
-               data:parametro,
-               method:"POST",
-               
-               success:function(respuesta){
-                   console.log(respuesta);
-                   alert(respuesta.mensaje);
-                   if(respuesta.codigo==1){
-                       //alert("¡Proveedor registrado!");
-                       let TIPO_PROVEEDOR = "";                    
-                       switch (parseInt($("#proveedor-txt-tipo").val())) {
-                           case 1:
-                               TIPO_PROVEEDOR = "Persona";
-                               break;
-                           case 2:
-                               TIPO_PROVEEDOR = "Empresa";
-                               break;
-                       }
-                       $("#lista-proveedores").append(`
-                           <li class="collection-item avatar flex-div scroll-item grid-display">
-                               <div>
-                                   <div class="col s12"><img src="img/producto2.jpg" alt="" class="circle"></div>
-                                   <div class="bold-text col s12 m6" id="inv-nombre-proveedor${$("#proveedor-txt-rtn").val()}">${$("#proveedor-txt-nombre").val()}</div>
-                                   <div class="grey-text col s12 m6">RTN: <span id="inv-rtn-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${$("#proveedor-txt-rtn").val()}</span></div>
-                                   <div class="grey-text col s12 m6">Estado: <span id="inv-estado-proveedor${$("#proveedor-txt-rtn").val()}" class="bold-text green-text">ACTIVO</span></div>
-                                   <div class="grey-text col s12 m6">Tipo de proveedor: <span id="inv-tipo-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${TIPO_PROVEEDOR}</span></div>
-                                   <div class="grey-text col s12 m6">Teléfono: <span id="inv-telefono-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${parseInt($("#proveedor-txt-telefono").val())}</span></div>
-                                   <div class="grey-text col s12 m6">Correo electrónico: <span id="inv-email-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${$("#proveedor-txt-email").val()}</span></div>
-                                   <div class="grey-text col s12">Dirección: <span id="inv-direccion-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${$("#proveedor-txt-direccion").val()}</span></div>
-                                   <div class="col s12">
-                                   <button class="modal-trigger link-style" onclick="abrirModal_proveedorEditar('${$("#proveedor-txt-rtn").val()}')">Editar</button>
-                                   </div>
-                               </div>
-                           </li>
-                       `);
-                       $("#btn-proveedor").attr("disabled",false);
-                       cerrarModal("form-registrar-proveedor");
-                   }
-                   else{
-                       //alert("ERROR: Ya existe un proveedor con el mismo RTN.");
-                       $("#btn-proveedor").attr("disabled",false);
-                   }
-               },
-               error:function(error){
-                   console.log(error);
-                   $("#btn-proveedor").attr("disabled",false);
-               }
-           });
-       } else {
-           alert("No es posible registrar al proveedor: hay campos vacíos o algún tipo de dato no es válido.");
-       }
+     * Registrar nuevo proveedor.
+     */
+    function(){
+        if (
+            validarRegex("proveedor-txt-rtn", "entero") &&
+            validarCampoVacio("proveedor-txt-nombre") &&
+            validarSelectList("proveedor-txt-tipo", "proveedor-span-tipo") &&
+            validarCampoNoObligatorio("proveedor-txt-direccion") &&
+            validarRegex("proveedor-txt-telefono", "entero") &&
+            validarEmailNoObligatorio("proveedor-txt-email")
+        ) {
+            var parametro = "proveedor-txt-rtn="+$("#proveedor-txt-rtn").val()+"&"+
+            "proveedor-txt-nombre="+$("#proveedor-txt-nombre").val()+"&"+
+            "proveedor-txt-tipo="+1+"&"+
+            "proveedor-txt-direccion="+$("#proveedor-txt-direccion").val()+"&"+
+            "proveedor-txt-telefono="+parseInt($("#proveedor-txt-telefono").val())+"&"+
+            "proveedor-txt-email="+$("#proveedor-txt-email").val()+"&"+
+            "estado="+1+"&"+"accion1 = guardar";
+            
+            $("#btn-proveedor").attr("disabled",true);
+            $.ajax({
+                url:"ajax/gestionProveedores.php?accion1=guardar",
+                data:parametro,
+                method:"POST",
+                
+                success:function(respuesta){
+                    console.log(respuesta);
+                    alert(respuesta.mensaje);
+                    if(respuesta.codigo==1){
+                        //alert("¡Proveedor registrado!");
+                        let TIPO_PROVEEDOR = "";                    
+                        switch (parseInt($("#proveedor-txt-tipo").val())) {
+                            case 1:
+                                TIPO_PROVEEDOR = "Persona";
+                                break;
+                            case 2:
+                                TIPO_PROVEEDOR = "Empresa";
+                                break;
+                        }
+                        $("#lista-proveedores").append(`
+                            <li class="collection-item avatar flex-div scroll-item grid-display">
+                                <div>
+                                    <div class="col s12"><img src="img/producto2.jpg" alt="" class="circle"></div>
+                                    <div class="bold-text col s12 m6" id="inv-nombre-proveedor${$("#proveedor-txt-rtn").val()}">${$("#proveedor-txt-nombre").val()}</div>
+                                    <div class="grey-text col s12 m6">RTN: <span id="inv-rtn-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${$("#proveedor-txt-rtn").val()}</span></div>
+                                    <div class="grey-text col s12 m6">Estado: <span id="inv-estado-proveedor${$("#proveedor-txt-rtn").val()}" class="bold-text green-text">ACTIVO</span></div>
+                                    <div class="grey-text col s12 m6">Tipo de proveedor: <span id="inv-tipo-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${TIPO_PROVEEDOR}</span></div>
+                                    <div class="grey-text col s12 m6">Teléfono: <span id="inv-telefono-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${parseInt($("#proveedor-txt-telefono").val())}</span></div>
+                                    <div class="grey-text col s12 m6">Correo electrónico: <span id="inv-email-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${$("#proveedor-txt-email").val()}</span></div>
+                                    <div class="grey-text col s12">Dirección: <span id="inv-direccion-proveedor${$("#proveedor-txt-rtn").val()}" class="black-text">${$("#proveedor-txt-direccion").val()}</span></div>
+                                    <div class="col s12">
+                                    <button class="modal-trigger link-style" onclick="abrirModal_proveedorEditar('${$("#proveedor-txt-rtn").val()}')">Editar</button>
+                                    </div>
+                                </div>
+                            </li>
+                        `);
+                        $("#btn-proveedor").attr("disabled",false);
+                        cerrarModal("form-registrar-proveedor");
+                    }
+                    else{
+                        //alert("ERROR: Ya existe un proveedor con el mismo RTN.");
+                        $("#btn-proveedor").attr("disabled",false);
+                    }
+                },
+                error:function(error){
+                    console.log(error);
+                    $("#btn-proveedor").attr("disabled",false);
+                }
+            });
+        } else {
+            alert("No es posible registrar al proveedor: hay campos vacíos o algún tipo de dato no es válido.");
+        }
 });
 /**
  * Abrir ventana modal con los datos del proveedor a editar

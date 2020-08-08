@@ -52,8 +52,7 @@
             <ul class="tabs let-scroll">
               <li class="tab"><a href="#inv1">Usuarios</a></li>
               <li class="tab"><a href="#inv2">Jornada Laboral</a></li>
-              <li class="tab"><a href="#inv3">Bitacora</a></li>
-              <li class="tab"><a href="#inv4">Logs</a></li>
+              <li class="tab"><a href="#inv3">Logs</a></li>
             </ul>
           </div>
           <!--REGISTRAR NUEVO USUARIO / EDITAR USUARIO-->
@@ -399,95 +398,8 @@
 
 
           
-          <!--VER Bitacora AL SISTEMA-->
+          <!--VER REGISTRO DE INGRESOS AL SISTEMA-->
           <div id="inv3" class="col s12">
-              <br>
-              <div class="justify-text col s12">
-                <h5>Bitacora</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro asperiores veritatis est sint consectetur dignissimos.</p>
-              </div>
-              <!-- 1. Lista de usuarios con fecha y hora de ingreso al sistema -->
-              <div class="row margin-zero">
-                <div class="col s12">
-                  <h6 class="bold-text">Registros de sucesos en el sistema</h6>
-                  <blockquote>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti voluptatum consectetur similique veniam laboriosam, obcaecati facere ullam quasi adipisci.
-                  </blockquote>
-                </div>
-                <!-- Ventana modal para mostrar imagen de archivo de la jornada laboral -->
-                <div class="modal" id="modal-jornada-archivo">
-                  <div class="modal-content" id="imagen-jornada-laboral"></div>
-                  <div class="modal-footer">
-                    
-                 
-                  </div>
-                </div>
-              </div>
-              <div class="col s12">
-                <ul class="collection" id="lista-jornadas">
-                  <li class="collection-item flex-div">
-                    <div class="bold-text col s12" id="adm-nombre-jornada215">Año Vigente 2020</div>
-
-
-
-      <table>
-        <thead>
-          <tr>
-              <th>Usuario</th>
-              <th>Ip de Computadora</th>
-              <th>Tabla Afectada</th>
-              <th>Operacion</th>
-              <th>Hora y Fecha</th>
-            </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>Alvin</td>
-            <td>Eclair</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>Alvin</td>
-            <td>Eclair</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>Alvin</td>
-            <td>Eclair</td>
-
-          </tr>
-        </tbody>
-      </table>
-            
-
-
-                    <div class="grey-text col s12 m6">Fecha inicio: <span id="adm-fechaInicio-jornada215" class="black-text" style="font-family: monospace;">12/05/19</span></div>
-                    <div class="grey-text col s12 m6">Fecha final: <span id="adm-fechaFin-jornada215" class="black-text" style="font-family: monospace;">11/06/19</span></div>
-                    
-                  </li>
-                  <li class="collection-item flex-div">
-                    
-                    
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div id="inv4" class="col s12">
               <br>
               <div class="justify-text col s12">
                 <h5>Logs</h5>
@@ -520,7 +432,13 @@
                       <button class="modal-trigger link-style link-style-no-absolute" onclick="abrirModal_jornadaArchivo('img/bg_color.jpg')">Ver archivo</button>
                     </div>
                   </li>
-                 
+                  <li class="collection-item flex-div">
+                    <div class="bold-text col s12" id="adm-nombre-jornada444">Jornada 444</div>
+                    <div class="grey-text col s12 m6">Fecha inicio: <span id="adm-fechaInicio-jornada444" class="black-text" style="font-family: monospace;">20/09/19</span></div>
+                    <div class="grey-text col s12 m6">Fecha final: <span id="adm-fechaFin-jornada444" class="black-text" style="font-family: monospace;">04/01/20</span></div>
+                    <div class="col s12">
+                      <button class="modal-trigger link-style link-style-no-absolute" onclick="abrirModal_jornadaArchivo('img/bg_dark.jpg')">Ver archivo</button>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -528,25 +446,6 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <footer class="col s12 page-footer">
       <div class="footer-copyright">
         <div class="container">
