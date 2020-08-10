@@ -123,6 +123,22 @@
                     </center>
                   </div>
                 </li>
+                <li>
+                  <div class="collapsible-header" tabindex="0">
+                    <i class="material-icons">place</i>
+                    <h6>CRUDS</h6>
+                  </div>
+                  <div class="collapsible-body">
+                    <p>Gestión de Productos, Proveedores y Clientes</p>
+                    <br>
+                    <center>
+                      <div class="row">
+                        <a href="crud.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Gestionar</a>
+                      </div>
+                    </center>
+                    <br>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
