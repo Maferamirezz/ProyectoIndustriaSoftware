@@ -6,7 +6,7 @@
  */
 $(document).ready(function(){
     console.log("El DOM 'inventario.php' ha sido cargado ♥");
-    //mostrarInsumos();
+    mostrarInsumos();
     //mostrarProveedores();
     //mostrarFacturas();
     changeSelect("insumo-txt-proveedor", "insumo-span-proveedor");
@@ -41,39 +41,40 @@ $("#btn-insumo").click(
             validarRegex("insumo-txt-cantidad", "entero") &&
             validarRegex("insumo-txt-precio", "decimal")
         ) { 
-            var parametros ="fecha="+$("#insumo-txt-fecha").val()+"&"+
-                            "proveedor="+$("#insumo-txt-proveedor").val()+"&"+
-                            "tipo="+parseInt($("#insumo-txt-tipo").val())+"&"+
-                            "nombreInsumo="+$("#insumo-txt-nombre").val()+"&"+
-                            "cantidad="+parseInt($("#insumo-txt-cantidad").val())+"&"+
-                            "precio="+parseFloat($("#insumo-txt-precio").val())+"&"+
+            var parametros ="insumo-txt-nombre="+$("#insumo-txt-nombre").val()+"&"+
+                            "insumo-txt-fecha="+$("#insumo-txt-fecha").val()+"&"+       
+                            "insumo-txt-proveedor="+$('#insumo-txt-proveedor option:selected' ).val()+"&"+
+                            "insumo-txt-tipo="+parseInt($('#insumo-txt-tipo option:selected' ).val())+"&"+                            
+                            "insumo-txt-cantidad="+parseInt($("#insumo-txt-cantidad").val())+"&"+
+                            "insumo-txt-precio="+parseFloat($("#insumo-txt-precio").val())+"&"+
                             "accion=registrar";
             console.log(parametros);
             $("#btn-insumo").attr("disabled",true);
             $.ajax({
-                url:"ajax/inventario.php",
+                url:"ajax/gestionInsumo.php?accion1=guardar",
                 data:parametros,
-                method:"GET",
+                method:"POST",
                 dataType:"json",
-                success:function(respuesta){
-                    console.log(respuesta);
-                    alert(respuesta.mensaje);
-                    if(respuesta.codigo==1){
+                success:function(respuestaInsumo){
+                    console.log(respuestaInsumo);                   
+                    alert(respuestaInsumo.mensaje);
+                    if(respuestaInsumo.codigo==1){
                         //alert("¡Insumo registrado!");
-                        mostrarInsumos();
+                        mostrarInsumos();                       
                         cerrarModal("form-registrar-insumo");
-                        $("#btn-insumo").attr("disabled",false);
+                        $("#btn-insumo").attr("disabled",false);                     
                     }
                     else{
-                        //alert("ERROR: Ya existe un insumo del mismo nombre registrado para el proveedor dado.");
+                    //    alert("ERROR:".respuesta.mensaje);
+                        alert("ERROR AL INSERTAR :");
                         $("#btn-insumo").attr("disabled",false);
                     }
-                },
+                }, 
                 error:function(error){
-                    console.log(error);
+                    alert("ERROR: ".error);
                     $("#btn-insumo").attr("disabled",false);
                 }
-            });
+            }); 
         } else {
             alert("No es posible registrar el insumo: hay campos vacíos o algún tipo de dato no es válido.");
         }
@@ -84,11 +85,12 @@ $("#btn-insumo").click(
  */
 function abrirModal_insumoEditar(idInsumo) {
     console.log("Id insumo a editar: "+idInsumo);
+    $('#modal-insumo-editar').modal('open'),
     $.ajax({
-        url:"ajax/inventario.php",
+        url:"..ajax/inventario.php",
         data:"id_insumo="+idInsumo+"&accion=abrirModal",
-        method:"GET",
-        dataType:"json",
+        method:"POST",
+        dataType:"json",      
         success:function(respuesta){
             console.log(respuesta);
             $('#inv-titulo-insumo-editar').html(respuesta.nombreInsumo+" - "+ idInsumo);
@@ -96,12 +98,55 @@ function abrirModal_insumoEditar(idInsumo) {
             $('input[id=insumo-editar-precio]').val(respuesta.precio);
             $('#btn-modal-editar-insumo').attr("onclick", "editarInsumo('"+idInsumo+"')");
             $('#modal-insumo-editar').modal('open');
-        },
+        },       
         error:function(error){
             console.log(error);
         }
     });
 }
+
+// $(document).on('submit', '#form-registrar-insumo' , function(event){ 
+//   event.preventDefault();
+//   //var cantidad = 
+//   //$( '#insumo-txt-cantidad') = 23 ;
+// }
+// );
+$('#btn-modal-nuevo-insumo').click(
+    function(){ 
+    console.log("Id insumo a editar: ");    
+    $('#modal-insumo-registrar').modal('open');
+     $.ajax({
+         url:"ajax/gestionInsumo.php?accion1=llenarTipoInsumo",
+         data:"'modal_id' : modal-insumo-registrar",
+         method:"POST",
+         dataType:"text",      
+         success:function(respuestaMostraTipoInsumo){
+            console.log('Ingresa Aqui');
+              $("#insumo-txt-tipo").html("");
+              $("#insumo-txt-tipo").append(respuestaMostraTipoInsumo); 
+              console.log(respuestaMostraTipoInsumo);    
+           },       
+    error:function(error){
+             console.log(error);
+        }
+ });
+ //$('#modal-insumo-registrar').modal('open');
+ $.ajax({
+     url:"ajax/gestionInsumo.php?accion1=llenarProveedor",
+     data:"'modal_id' : modal-insumo-registrar",
+     method:"POST",
+     dataType:"text",      
+     success:function(respuestaMostraProveedores){
+        console.log('Ingresa Aqui');
+          $("#insumo-txt-proveedor").html("");
+          $("#insumo-txt-proveedor").append(respuestaMostraProveedores);     
+       },       
+error:function(error){
+         console.log(error);
+    }
+});
+});
+
 /**
  * Editar la cantidad disponible y/o el precio de un insumo.
  * @param {Number} idInsumo 
@@ -145,6 +190,7 @@ function editarInsumo(idInsumo) {
             },
             error:function(error){
                 console.log(error);
+                alert("ERROR: ".error);
                 $("#btn-modal-editar-insumo").attr("disabled",false);
             }
         });
@@ -159,39 +205,17 @@ function mostrarInsumos() {
     console.log("Insumo: Lista de insumos");
     $("#lista-insumos").html("");
     $.ajax({
-        url:"ajax/inventario.php",
+        url:"ajax/gestionInsumo.php?accion1=mostrar",
         data:"accion=listaInsumos",
-        method:"GET",
-        dataType:"json",
-        success:function(respuesta){
-            console.log(respuesta);
+        method:"POST",
+        DataType:"json",
+        success:function(respuestaMostrarInsumo){
+         //   console.log(respuestaMostrarInsumo);
             $("#lista-insumos").html("");
-            respuesta.forEach(insumo => {
-                let _ESTADO_CANTIDAD = "green-text";
-                if (respuesta.cantidad == 0) {
-                    _ESTADO_CANTIDAD = "red-text";
-                }
-                $("#lista-insumos").append(`
-                    <li class="collection-item avatar flex-div scroll-item grid-display">
-                    <div>
-                        <div class="col s12"><img src="img/producto2.jpg" alt="" class="circle"></div>
-                        <div class="col s12 m6" style="font-weight: bold;" id="inv-producto-insumo${insumo.idInsumo}">${insumo.nombreInsumo}</div>
-                        <div class="col s12 m6" style="font-family: monospace;" id="inv-fecha-insumo${insumo.idInsumo}">${insumo.fecha}</div>
-                        <div class="grey-text col s12 m6">Cantidad: <span id="inv-cantidad-insumo${insumo.idInsumo}" class="bold-text ${_ESTADO_CANTIDAD}">${insumo.cantidad}</span></div>
-                        <div class="grey-text col s12 m6">Precio: <span id="inv-precio-insumo${insumo.idInsumo}" class="black-text">${insumo.precio}</span></div>
-                        <div class="grey-text col s12">Proveedor: <span class="black-text" id="inv-proveedor-insumo${insumo.idInsumo}">${insumo.nombreProveedor}</span></div>
-                        <div class="grey-text col s12">Tipo: <span class="black-text" id="inv-tipo-insumo${insumo.idInsumo}">${insumo.tipoInsumo}</span></div>
-                        <div class="grey-text col s12">Registrado por: <span class="black-text" id="inv-nombreEmpleado-insumo${insumo.idInsumo}">${insumo.pnombre} ${insumo.snombre} ${insumo.papellido}${insumo.sapellido}</span></div>
-                        <div class="col s12">
-                        <button class="modal-trigger link-style" onclick="abrirModal_insumoEditar('${insumo.idInsumo}')">Editar</button>
-                        </div>
-                    </div>
-                    </li>
-                `);
-            });
+            $("#lista-insumos").append(respuestaMostrarInsumo);                              
         },
-        error:function(error){
-            console.log(error);
+        error:function(error){                   
+            alert("ERROR AL CARGAR LOS DATOS: ");                     
         }
     });
 }
