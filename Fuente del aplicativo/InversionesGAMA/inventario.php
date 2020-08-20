@@ -74,7 +74,9 @@
                 revisar la cantidad disponible de estos. Si registrará un insumo ya existente, hágalo si el proveedor es distinto
                 (p.e. 50 unidades de Fertilizante del proveedor A, 50 unidades de Fertilizante del proveedor B).</blockquote>
               <p>
-                <button class="btn purple-orange-gradient waves-effect modal-trigger" data-target="modal-insumo-registrar"><i class="material-icons left">add</i>Nuevo insumo</button>
+                <!-- <button class="btn purple-orange-gradient waves-effect modal-trigger" data-target="modal-insumo-registrar" onclick="abrirModal_insumoEditar('.$row[0].')><i class="material-icons left">add</i>Nuevo insumo</button> -->
+                 <button class="btn purple-orange-gradient waves-effectS" id="btn-modal-nuevo-insumo"  ><i class="material-icons left">add</i>Nuevo insumo</button> 
+                 <!-- //onclick="abrirModal_NuevoInsumo()" -->
               </p>
             </div>
             <!-- 1. Ventana modal para registrar nuevo insumo -->
@@ -83,7 +85,7 @@
                 <h4>Nueva compra de insumo</h4>
                 <p class="no-margin-padding-bottom">Registrar por primera vez la compra de alguna materia prima</p>
               </div>
-              <form id="form-registrar-insumo" class="modal-content no-margin-padding-top flex-div form-reset">
+              <form id="form-registrar-insumo" method="POST" class="modal-content no-margin-padding-top flex-div form-reset">
                 <div class="col s12 m6 right-pad-input input-field margin-zero">
                   <p class="grey-text">Nombre del insumo</p>
                   <input class="validate" required="" id="insumo-txt-nombre" type="text">
@@ -105,13 +107,14 @@
                   <span class="helper-text" id="insumo-span-proveedor"></span>
                 </div>
                 <div class="col s12 m6 left-pad-input input-field margin-zero">
-                  <p class="grey-text">Tipo de inventario</p>
-                  <select class="visible" required="" id="insumo-txt-tipo">
+                  <p class="grey-text">Tipo de Insumo</p>                 
+                   <select class="visible" required="" id="insumo-txt-tipo">
                     <option value="" disabled="" selected="">Elegir</option>
                     <option value="1">Indufesa</option>
                     <option value="2">Plantas tropicales</option>
                     <option value="3">Bomohsa</option>
-                  </select>
+                    <?php echo $tipoInsumo;?>
+                  </select>                              
                   <span class="helper-text" id="insumo-span-tipo"></span>
                 </div>
                 <div class="col s12 m6 right-pad-input input-field margin-zero">
@@ -160,7 +163,7 @@
                   <button class="waves-effect waves-red btn-flat" onclick="cerrarModal('form-editar-insumo')">Cancelar</button>
                 </div>
               </div>
-              <div class="col s12 m6 l4">
+              <!-- <div class="col s12 m6 l4">
                 <div class="card">
                   <div class="card-content">
                     <div class="card-title">
@@ -178,25 +181,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="col s12">
               <ul class="collection" id="lista-insumos">
-                <li class="collection-item avatar flex-div scroll-item grid-display">
-                  <div>
-                    <div class="col s12"><img src="img/producto2.jpg" alt="" class="circle"></div>
-                    <div class="col s12 m6" style="font-weight: bold;" id="inv-producto-insumo000AAA111">Jalapeño</div>
-                    <div class="col s12 m6" style="font-family: monospace;" id="inv-fecha-insumo000AAA111">05/04/2020 GTM-6 17:02:24</div>
-                    <div class="grey-text col s12 m6">Cantidad: <span id="inv-cantidad-insumo000AAA111" class="bold-text green-text">9999</span></div>
-                    <div class="grey-text col s12 m6">Precio: <span id="inv-precio-insumo000AAA111" class="black-text">Lps. 99.99</span></div>
-                    <div class="grey-text col s12">Proveedor: <span class="black-text" id="inv-proveedor-insumo000AAA111">Granjas El Pollón</span></div>
-                    <div class="grey-text col s12">Tipo: <span class="black-text" id="inv-tipo-insumo000AAA111">Bien de consumo</span></div>
-                    <div class="grey-text col s12">Registrado por: <span class="black-text" id="inv-nombreEmpleado-insumo000AAA111">Luis Garcia Morales</span></div>
-                    <div class="col s12">
-                      <button class="modal-trigger link-style" onclick="abrirModal_insumoEditar('000AAA111')">Editar</button>
-                    </div>
-                  </div>
-                </li>
                 <li class="collection-item avatar flex-div scroll-item grid-display">
                   <div>
                     <div class="col s12"><img src="img/producto2.jpg" alt="" class="circle"></div>
