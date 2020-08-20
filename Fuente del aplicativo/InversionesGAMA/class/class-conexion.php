@@ -1,21 +1,41 @@
 <?php
 	
 	class Conexion{
-		private $hostDB = "localhost/XE";
-		private $usuarioDB = "GAMA";
-		private $passDB = "legolas";
+
 		private $link;
 
+		public function getConexion(){
+			return $this->link;
+		}
+		public function setConexion($link){
+			$this->link = $link;
+		}
+
 		public function __construct(){
-			$this->link = oci_connect("GAMA","legolas","localhost/XE");
+			$hostDB = "localhost/orcl";
+			$usuarioDB = "system"; 
+			$passDB = "oracle";
+			$this->link = oci_connect($usuarioDB, $passDB,  $hostDB) or die('Connection failed!');
 			if (!$this->link) {
 	    	$e = oci_error();
 	    	trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-	       }
+	       }			
+		}
+
+		public function conexion(){
+			$hostDB = "localhost/orcl";
+			$usuarioDB = "system"; 
+			$passDB = "oracle";
+			$this->link = oci_connect($usuarioDB, $passDB,  $hostDB) or die('Connection failed!');
+			if (!$this->link) {
+	    	$e = oci_error();
+	    	trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+	       }			
 		}
 	
+	
 
-	public function ejecutarConsulta($sql){
+	   public function ejecutarConsulta($sql){
 			$query = oci_parse($this->link,$sql);
 			 oci_execute($query);
             return $query;
@@ -41,6 +61,7 @@
 			return oci_num_rows($resultado);
 			
 		}
+
 
     }
 ?>
