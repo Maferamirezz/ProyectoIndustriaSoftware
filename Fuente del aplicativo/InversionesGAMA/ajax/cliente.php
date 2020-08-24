@@ -2,41 +2,66 @@
     $accion = $_GET["accion"];
     switch ($accion) {
         case 'registrar':
+            // Insertar los siguientes valores en la tabla SQL Persona
+            //$_GET["id"], $_GET["pnombre"], $_GET["snombre"], $_GET["papellido"], $_GET["sapellido"], $_GET["telefono"], $_GET["direccion"], $_GET["genero"]
+            
+            // Insertar los siguientes valores en la tabla SQL Usuario
+            //$_GET["username"], $_GET["password1"], $_GET["contrato"], $_GET["estado"], $_GET["id"], $_GET["tipo"], $_GET["area"]
+            
+            // El SP debe SOLA Y UNICAMENTE devolver codigo y mensaje
             $respuesta["codigo"] = 1;
-            $respuesta["mensaje"] ='Proveedor registrado correctamente';
+            $respuesta["mensaje"] ='Usuario registrado correctamente';
+            // RETORNAR RESPUESTA A JS
             echo json_encode($respuesta);
             break;
 
         case 'abrirModal':
-            // Buscar información del elemento con el id = $_GET["rtn"]
-            $respuesta["mensaje"] = "Apertura ventana modal para editar proveedor";
-                
-            $respuesta["nombre"] = "Juanin Juan Jarris";
-            $respuesta["rtn"] = $_GET["rtn_proveedor"];
-            $respuesta["tipo"] = "Persona";
-            $respuesta["direccion"] = "Avenida Gutenberg, dos cuadras adelante del hospital general";
-            $respuesta["telefono"] = "22020090";
-            $respuesta["email"] = "example@assa.adas";
+            // Seleccionar información del elemento con el id = $_GET["idUsuario"]
+            // Traer los siguientes valores de la tabla SQL Persona: pnombre, snombre, papellido, sapellido, telefono, direccion
+            // Traer los siguientes valores de la tabla SQL Usuario: username, contrato, estado
+            // Traer los siguientes valores de la tabla SQL TipoUsuario: tipoUsuario
+            // Traer los siguientes valores de la tabla SQL AreaTrabajo: areaTrabajo
+            
+            // Guardar los resultados en la variable $respuesta ... EL CODIGO ABAJO ES UN EJEMPLO PERO NO ES ASI, SOLO BASTA CON GUARDAR DIRECTAMENTE LA CONSULTA EN LA VARIABLE NO UNO POR UNO LOS DATOS
+            $respuesta["pnombre"] = "Codigo";            
+            $respuesta["tipo"] = 1;
+            $respuesta["telefono"] = "";
+            
+            $respuesta["username"] = "";
+            $respuesta["direccion"] = "";
             $respuesta["estado"] = 1;
+            // RETORNAR RESPUESTA A JS
             echo json_encode($respuesta);
             break;
             
         case 'editar':
-            // Editar el elemento con el id = $_GET["rtn"]
-            $respuesta["mensaje"] = "Se ha completado la edición de un proveedor";
+            // Editar el elemento con el id = $_GET["idUsuario"]
+            // Update los valores con los siguientes datos en las respectivas tablas: $_GET["tipo"], $_GET["telefono"], $_GET["contrato"], $_GET["area"], $_GET["username"}, $_GET["password"], $_GET["direccion"], $_GET["estado"];
 
-            $respuesta["nombre"] = $_GET["nombre"];
-            $respuesta["rtn"] = $_GET["rtn"]; // Retorno
-            //$respuesta["tipo"] = $_GET["tipo"];
-            $respuesta["tipo"] = 1;
-            $respuesta["direccion"] = $_GET["direccion"];
-            $respuesta["telefono"] = $_GET["telefono"];
-            $respuesta["email"] = $_GET["email"];
-            $respuesta["estado"] = $_GET["estado"];
+            // Simulacion coincidencia de contraseña anterior del usuario
+        $respuesta["pnombre"] = "Codigo";            
+            $respuesta["tipo"] = "";
+            $respuesta["telefono"] = "";
+            
+            $respuesta["username"] = "";
+            $respuesta["direccion"] = "";
+            $respuesta["estado"] = 1;
+            $old = "contraseNIA#2020";
+            if ($old == $_GET["oldPassword"]) {
+                // El SP debe SOLA Y UNICAMENTE devolver codigo y mensaje
+                $respuesta["codigo"] = 1;
+                $respuesta["mensaje"] ='Usuario registrado correctamente';
+                // RETORNAR RESPUESTA A JS
+                echo json_encode($respuesta);
+                break;
+            }
+            $respuesta["mensaje"] = "La contraseña anterior del usuario no es válida";
+            $respuesta["codigo"] = 0;
+            // RETORNAR LA RESPUESTA A JS
             echo json_encode($respuesta);
             break;
             
-        case 'listaProveedores':
+        case 'listaCliente':
             # code...
             break;
     }

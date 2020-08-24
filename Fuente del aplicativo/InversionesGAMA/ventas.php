@@ -58,7 +58,7 @@
             <ul class="tabs let-scroll">
               <li class="tab"><a href="#inv1">Nueva factura</a></li>
               <li class="tab"><a href="#inv2">Productos</a></li>
-              <li class="tab"><a href="#inv3">Clientes</a></li>
+              
             </ul>
           </div>
           <!--REGISTRAR NUEVA FACTURA-->
@@ -380,35 +380,7 @@
                 </li>
               </ul>
             </div>
-          </div>
-          <!--CLIENTES-->
-          <div id="inv3" class="col s12">
-            <br>
-            <div class="justify-text col s12">
-              <h5>CLIENTES</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rerum at repudiandae veniam praesentium commodi!</p>
-            </div>
-            <!-- Lista de facturas con opcion a descargar la respectiva información completa en formato PDF-->
-            <div class="col s12">
-              <ul class="collection" id="lista-logs">
-                <li class="collection-item flex-div">
-                    <div class="bold-text col s12" id="adm-nombre-log1">Walter Samuel Rivera Ham</div>
-                    <div class="grey-text col s12 m6 salto-de-linea">Nombre de usuario: <span id="adm-username-log1" class="black-text" style="font-family: monospace;">LiderShino2556</span></div>
-                    <div class="grey-text col s12 m6">Último inicio de sesión: <span id="adm-fechaSesion-log1" class="black-text" style="font-family: monospace;">12/05/19 GTM-6 02:00PM</span></div>
-                </li>
-                <li class="collection-item flex-div">
-                    <div class="bold-text col s12" id="adm-nombre-log2">Walter Samuel Rivera Ham</div>
-                    <div class="grey-text col s12 m6">Nombre de usuario: <span id="adm-username-log2" class="black-text" style="font-family: monospace;">LiderShino2556</span></div>
-                    <div class="grey-text col s12 m6">Último inicio de sesión: <span id="adm-fechaSesion-log2" class="black-text" style="font-family: monospace;">12/05/19 GTM-6 04:27PM</span></div>
-                </li>
-                <li class="collection-item flex-div">
-                  <div class="bold-text col s12" id="adm-nombre-log31">Walter Samuel Rivera Ham</div>
-                  <div class="grey-text col s12 m6">Nombre de usuario: <span id="adm-username-log3" class="black-text" style="font-family: monospace;">LiderShino2556</span></div>
-                  <div class="grey-text col s12 m6">Úlltimo inicio de sesión: <span id="adm-fechaSesion-log3" class="black-text" style="font-family: monospace;">12/05/19 GTM-6 06:30PM</span></div>
-                </li>
-              </ul>
-            </div>
-          </div>
+          </div>         
         </div>
       </div>
     </div>
