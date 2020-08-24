@@ -50,7 +50,7 @@
               <ul class="collapsible popout">
                 <li>
                   <div class="collapsible-header" tabindex="0">
-                    <i class="material-icons">place</i>
+                    <i class="material-icons">shopping_cart</i>
                     <h6>Ventas</h6>
                   </div>
                   <div class="collapsible-body">
@@ -64,7 +64,7 @@
                     <br>
                     <center>
                       <div class="row">
-                        <a href="ventas.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Clientes</a>
+                        <a href="cliente.php" class="btn btn-large col s12 waves-effect purple-orange-gradient">Clientes</a>
                       </div>
                     </center>
                     <br>
@@ -77,7 +77,7 @@
                 </li>
                 <li>
                   <div class="collapsible-header" tabindex="0">
-                    <i class="material-icons">filter_drama</i>
+                    <i class="material-icons">dashboard</i>
                     <h6>Inventario</h6>
                   </div>
                   <div class="collapsible-body">
@@ -104,7 +104,7 @@
                 </li>
                 <li>
                   <div class="collapsible-header" tabindex="0">
-                    <i class="material-icons">place</i>
+                    <i class="material-icons">group</i>
                     <h6>Administración</h6>
                   </div>
                   <div class="collapsible-body">
@@ -125,7 +125,7 @@
                 </li>
                 <li>
                   <div class="collapsible-header" tabindex="0">
-                    <i class="material-icons">place</i>
+                    <i class="material-icons">clear_all</i>
                     <h6>CRUDS</h6>
                   </div>
                   <div class="collapsible-body">
